@@ -75,11 +75,7 @@ exports.login = (req, res) => {
         })
         .catch(err => {
             console.error(err);
-            if(err.code === 'auth/wrong-password'){
-                return res.status(403).json({general: 'Wrong credentials, please try again.'});
-            }else{
-                return res.status(500).json({error: err.code});
-            }
+            return res.status(403).json({ general: 'Wrong credentials, please try again.' });
         });
 };
 
@@ -115,7 +111,7 @@ exports.getUserDetails = (req, res) => {
                     body: doc.data().body,
                     createdAt: doc.data().createdAt,
                     userID: doc.data().userID,
-                    imageUrl: doc.data().imageUrl,
+                    userImage: doc.data().userImage,
                     likeCount: doc.data().likeCount,
                     commentCount: doc.data().commentCount,
                     screamID: doc.id
